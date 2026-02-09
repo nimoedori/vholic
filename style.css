@@ -1,0 +1,98 @@
+/* 기본 설정 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #ffffff;
+  color: #111;
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* 헤더 */
+.header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #777;
+  margin-top: 4px;
+}
+
+/* 카드 공통 */
+.card {
+  border: 1px solid #eee;
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 16px;
+}
+
+.card h2 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+/* 정보 리스트 */
+.info-list {
+  list-style: none;
+}
+
+.info-list li {
+  font-size: 14px;
+  padding: 6px 0;
+}
+
+/* 강조 카드 */
+.highlight {
+  border-color: #ff6b00;
+  background-color: #fff8f3;
+}
+
+/* 상태 텍스트 */
+.status {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.status.open {
+  color: #ff6b00;
+}
+
+.status.closed {
+  color: #999;
+}
+
+/* 푸터 */
+.footer {
+  text-align: center;
+  margin-top: 24px;
+}
+
+.footer p {
+  font-size: 13px;
+  color: #555;
+}
+
+.footer .dm {
+  margin-top: 4px;
+  font-weight: 700;
+  color: #ff6b00;
+}
