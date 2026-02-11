@@ -8,12 +8,15 @@
 </head>
 <body>
   <div class="container">
-
     <!-- 헤더 -->
     <header class="header">
-      <h1>V-HOLIC</h1>
-      <p class="subtitle">Bundang Volleyball Crew</p>
+      <div class="header-top">
+        <img src="logo.jpg" alt="V-HOLIC 로고" class="logo" />
+        <h1>V-HOLIC</h1>
+      </div>
+      <p class="subtitle">Bundang Volleyball Team</p>
     </header>
+
 
     <!-- 2026 이벤트 소개 -->
     <section class="card highlight">
@@ -23,12 +26,21 @@
         <li>✔ 금요일 / 일요일</li>
         <li>✔ 19:00 – 22:00 (금요일) / 14:00 – 18:00 (일요일)</li>
         <li>✔ 남/여 각 3명씩 (인원 미충족시 성별 무관 5명)</li>
+        <li>✔ 특별히 올해는 게스트 참여 횟수 제한이 없습니다!</li>
+
       </ul>
     </section>
 
     <!-- 게스트 현황 -->
     <section class="card highlight">
       <h2>게스트 현황</h2>
+      <div class="calendar-legend">
+        <span class="legend-male">● 남</span>
+        <span class="legend-female">● 여</span>
+        <span class="legend-closed">● 마감</span>
+
+      </div>
+
       <div class="calendar-header">
         <button id="prevMonth">◀</button>
         <span id="monthTitle"></span>
@@ -41,7 +53,7 @@
     <section class="card">
       <h2>브이홀릭 정보</h2>
       <ul class="info-list">
-        <li>🏐 요일: 화요일 / 금요일 / 일요일</li>
+        <li>🏐 요일: 화요일(레슨) / 금요일 / 일요일</li>
         <li>⏰ 시간: 19:00 – 22:00 (평일) / 14:00 – 18:00 (주말)</li>
         <li>📍 장소: 하탑초등학교 (야탑역 3번 출구 도보 10분)</li>
       </ul>

@@ -1,83 +1,84 @@
 const calendarEl = document.getElementById("calendar");
-const monthTitleEl = document.getElementById("monthTitle");
-
+const monthTitle = document.getElementById("monthTitle");
 const prevBtn = document.getElementById("prevMonth");
 const nextBtn = document.getElementById("nextMonth");
 
-// 네가 관리할 상태
-const guestStatus = {
-  "2026-02-13": "open",
-  "2026-02-15": "open",
-  "2026-02-20": "open",
-  "2026-02-22": "open",
-  "2026-02-27": "open",
+let currentMonth = new Date().getMonth();
+let currentYear = new Date().getFullYear();
 
+/* ===== 게스트 데이터 (여기만 수정하면 됨) ===== */
+const guestData = {
+  "2026-2-13": { male: "1/3", female: "1/3" },
+  "2026-2-15": { male: "0/3", female: "1/3" },
+  "2026-2-20": { male: "0/3", female: "0/3" },
+  "2026-2-22": { male: "0/3", female: "0/3" },
+  "2026-2-27": { male: "0/3", female: "0/3" },
+  "2026-3-6": { male: "0/3", female: "1/3" }
 };
-
-let currentDate = new Date();
 
 function renderCalendar(year, month) {
   calendarEl.innerHTML = "";
-
-  monthTitleEl.textContent = `${year}년 ${month + 1}월`;
-
-  const firstDay = new Date(year, month, 1);
-  const lastDate = new Date(year, month + 1, 0).getDate();
-  const startDay = firstDay.getDay();
-
-  const days = ["일", "월", "화", "수", "목", "금", "토"];
+  monthTitle.textContent = `${year}.${month + 1}`;
 
   const grid = document.createElement("div");
-  grid.className = "calendar-grid";
+  grid.className = "calendar";
 
-  days.forEach(d => {
-    const head = document.createElement("div");
-    head.className = "day head";
-    head.textContent = d;
-    grid.appendChild(head);
-  });
+  const lastDate = new Date(year, month + 1, 0).getDate();
 
-  for (let i = 0; i < startDay; i++) {
-    grid.appendChild(document.createElement("div"));
-  }
+  for (let d = 1; d <= lastDate; d++) {
+    const dayEl = document.createElement("div");
+    dayEl.className = "calendar-day";
 
-  for (let date = 1; date <= lastDate; date++) {
-    const day = document.createElement("div");
-    day.className = "day";
+    const dateKey = `${year}-${month + 1}-${d}`;
+    const data = guestData[dateKey];
 
-    const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(date).padStart(2, "0")}`;
+    let statusHTML = "";
 
-    const label = document.createElement("span");
-    label.className = "date";
-    label.textContent = date;
+    if (data) {
+      if (data.male === "full" && data.female === "full") {
+        statusHTML = `<div class="status-closed">마감</div>`;
+      } else {
+        if (data.male === "full") {
+          statusHTML += `<div class="status-male">마감</div>`;
+        } else {
+          statusHTML += `<div class="status-male">${data.male}</div>`;
+        }
 
-    day.appendChild(label);
-
-    if (guestStatus[dateStr]) {
-      const status = document.createElement("span");
-      status.className = `status ${guestStatus[dateStr]}`;
-      status.textContent =
-        guestStatus[dateStr] === "open" ? "모집중" : "마감";
-      day.appendChild(status);
-      day.classList.add(guestStatus[dateStr]);
+        if (data.female === "full") {
+          statusHTML += `<div class="status-female">마감</div>`;
+        } else {
+          statusHTML += `<div class="status-female">${data.female}</div>`;
+        }
+      }
     }
 
-    grid.appendChild(day);
+    dayEl.innerHTML = `
+      <div class="date">${d}</div>
+      ${statusHTML}
+    `;
+
+    grid.appendChild(dayEl);
   }
 
   calendarEl.appendChild(grid);
 }
 
-// 버튼 이벤트
 prevBtn.addEventListener("click", () => {
-  currentDate.setMonth(currentDate.getMonth() - 1);
-  renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
+  currentMonth--;
+  if (currentMonth < 0) {
+    currentMonth = 11;
+    currentYear--;
+  }
+  renderCalendar(currentYear, currentMonth);
 });
 
 nextBtn.addEventListener("click", () => {
-  currentDate.setMonth(currentDate.getMonth() + 1);
-  renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
+  currentMonth++;
+  if (currentMonth > 11) {
+    currentMonth = 0;
+    currentYear++;
+  }
+  renderCalendar(currentYear, currentMonth);
 });
 
-// 최초 실행
-renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
+renderCalendar(currentYear, currentMonth);

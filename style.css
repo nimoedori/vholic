@@ -1,4 +1,9 @@
-/* 기본 설정 */
+/* ========================= */
+/* 기본 설정 #4b032b / #2f2f2f / #1f2643*/
+/* ========================= */
+
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +11,8 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, sans-serif;
   background-color: #ffffff;
   color: #111;
   line-height: 1.5;
@@ -18,10 +24,26 @@ body {
   padding: 20px;
 }
 
+/* ========================= */
 /* 헤더 */
+/* ========================= */
+
 .header {
   text-align: center;
   margin-bottom: 24px;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
 }
 
 .header h1 {
@@ -33,10 +55,15 @@ body {
 .subtitle {
   font-size: 14px;
   color: #777;
-  margin-top: 4px;
+  margin-top: 6px;
 }
 
+
+
+/* ========================= */
 /* 카드 공통 */
+/* ========================= */
+
 .card {
   border: 1px solid #eee;
   border-radius: 14px;
@@ -50,7 +77,6 @@ body {
   margin-bottom: 12px;
 }
 
-/* 정보 리스트 */
 .info-list {
   list-style: none;
 }
@@ -60,20 +86,22 @@ body {
   padding: 6px 0;
 }
 
-/* 강조 카드 */
 .highlight {
-  border-color: #ff6b00;
-  background-color: #fff8f3;
+  border-color: #4b032b;
+  background-color: #fff9fc;
 }
 
-/* 상태 텍스트 (기존) */
+/* ========================= */
+/* 상태 텍스트 */
+/* ========================= */
+
 .status {
   font-size: 16px;
   font-weight: 700;
 }
 
 .status.open {
-  color: #ff6b00;
+  color: #930754;
 }
 
 .status.closed {
@@ -81,67 +109,100 @@ body {
 }
 
 /* ========================= */
-/* 📅 게스트 달력 전용 CSS */
+/* 📅 게스트 달력 전용 */
 /* ========================= */
 
-.calendar {
-  margin-top: 12px;
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
-.calendar h3 {
-  font-size: 15px;
+.calendar-header button {
+  border: none;
+  background: #4b032b;/*#ff6b00;*/
+  color: #fff;
+  font-size: 14px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.calendar-header strong {
+  font-size: 14px;
   font-weight: 700;
+}
+
+.calendar-legend {
+  display: flex;
+  gap: 10px;
+  font-size: 12px;
   margin-bottom: 8px;
 }
 
-.calendar-grid {
+.legend-male {
+  color: #2049af;
+  font-weight: 700;
+}
+
+.legend-female {
+  color: #b2292b;
+  font-weight: 700;
+}
+
+.legend-closed {
+  color: #999;
+  font-weight: 700;
+}
+
+/* 달력 그리드 */
+
+.calendar {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 6px;
 }
 
-.day {
+.calendar-day {
   border: 1px solid #eee;
   border-radius: 8px;
-  min-height: 60px;
-  padding: 6px 4px;
+  padding: 4px 4px;
   font-size: 12px;
+  text-align: center;
+  height: 60px;
   background: #fff;
 }
 
-.day.head {
-  border: none;
-  background: transparent;
-  font-weight: 700;
-  text-align: center;
-  color: #777;
-  min-height: auto;
-}
-
-.day .date {
-  display: block;
+.calendar-day .date {
   font-weight: 700;
   font-size: 13px;
-  margin-bottom: 2px;
 }
 
-/* 달력 상태 */
-.day.open {
-  background-color: #fff1e6;
-  border-color: #ff6b00;
-}
+/* 남/여 상태 표시 */
 
-.day.closed {
-  background-color: #f5f5f5;
-  color: #999;
-}
-
-.day .status {
-  font-size: 11px;
+.status-male {
+  color: #2049af;
   font-weight: 700;
+  font-size: 11px;
 }
 
+.status-female {
+  color: #b2292b;
+  font-weight: 700;
+  font-size: 11px;
+}
+
+.status-closed {
+  color: #999;
+  font-weight: 700;
+  font-size: 11px;
+}
+
+/* ========================= */
 /* 푸터 */
+/* ========================= */
+
 .footer {
   text-align: center;
   margin-top: 24px;
@@ -155,28 +216,5 @@ body {
 .footer .dm {
   margin-top: 4px;
   font-weight: 700;
-  color: #ff6b00;
+  color: #db1e96;
 }
-
-.calendar-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.calendar-header button {
-  border: none;
-  background: #ff6b00;
-  color: #fff;
-  font-size: 14px;
-  padding: 6px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.calendar-header span {
-  font-size: 14px;
-  font-weight: 700;
-}
-
