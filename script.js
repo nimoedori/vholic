@@ -8,9 +8,7 @@ let currentYear = new Date().getFullYear();
 
 /* ===== 게스트 데이터 (여기만 수정하면 됨) ===== */
 const guestData = {
-  "2026-2-13": { male: "1/3", female: "2/3" },
-  "2026-2-15": { male: "1/3", female: "full" },
-  "2026-2-20": { male: "0/3", female: "1/3" },
+  "2026-2-20": { male: "1/3", female: "2/3" },
   "2026-2-22": { male: "0/3", female: "0/3" },
   "2026-2-27": { male: "0/3", female: "0/3" },
   "2026-3-6": { male: "0/3", female: "1/3" }
@@ -24,6 +22,8 @@ function renderCalendar(year, month) {
   grid.className = "calendar";
 
   const lastDate = new Date(year, month + 1, 0).getDate();
+  // 오늘 날짜 표시
+  const today = new Date();
 
   for (let d = 1; d <= lastDate; d++) {
     const dayEl = document.createElement("div");
@@ -31,6 +31,15 @@ function renderCalendar(year, month) {
 
     const dateKey = `${year}-${month + 1}-${d}`;
     const data = guestData[dateKey];
+
+    const isToday = 
+    year === today.getFullYear() &&
+    month === today.getMonth() &&
+    d === today.getDate();
+
+  if (isToday) {
+    dayEl.classList.add("today");
+  }
 
     let statusHTML = "";
 
